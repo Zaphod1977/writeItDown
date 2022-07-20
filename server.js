@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const express = require('express');
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 443;
 
 const app = express();
 const { notes } = require('./Develop/db/db.json');
