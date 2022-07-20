@@ -8,7 +8,7 @@ const app = express();
 const { notes } = require('./Develop/db/db.json');
 const { networkInterfaces } = require('os');
 
-app.use(express.static('develop/public'));
+app.use(express.static('Develop/public'));
 
 //parse incoming string or array data
 app.use(express.urlencoded({ extended: true }));
@@ -64,11 +64,11 @@ app.delete('/api/notes/:id', (req, res) => {
 });
 
 app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './develop/public/notes.html'));
+    res.sendFile(path.join(__dirname, './Develop/public/notes.html'));
 });
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './develop/public/index.html'));
+    res.sendFile(path.join(__dirname, './Develop/public/index.html'));
 });
 
 app.listen(PORT, () => {
