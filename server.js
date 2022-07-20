@@ -5,7 +5,7 @@ const express = require('express');
 const PORT = process.env.PORT || 443;
 
 const app = express();
-const { notes } = require('./Develop/db/db.json');
+var { notes } = require('./Develop/db/db.json');
 const { networkInterfaces } = require('os');
 
 app.use(express.static('Develop/public'));
@@ -37,9 +37,19 @@ function validateNote(note) {
     return true;
 }
 
+function deleteNote(id, notesArray) {
+    notesArray = notes.filter(note => note.id != id);
+    fs.writeFileSync(
+        path.join(__dirname, './Develop/db/db.json'),
+        JSON.stringify({ notes: notesArray }, null, 2)
+    );
+    notes = notesArray;
+    return notes;
+}
+
 app.get('/api/notes', (req, res) => {
-    console.log(notes);
-    res.json(notes);});
+    res.json(notes);
+});
 
 app.post('/api/notes', (req, res) => {
     req.body.id = notes.length;
@@ -52,15 +62,8 @@ app.post('/api/notes', (req, res) => {
 });
 
 app.delete('/api/notes/:id', (req, res) => {
-    console.log("line 53")
-    const newNotes = notes.filter(note => note.id != req.params.id);
-    fs.writeFileSync(
-        path.join(__dirname, './Develop/db/db.json'),
-        JSON.stringify({ notes: newNotes }, null, 2)
-    );
-    notes=newNotes;
-        console.log(notes);
-    res.json(newNotes);
+    deleteNote(req.params.id, notes)
+    res.json(notes);
 });
 
 app.get('/notes', (req, res) => {

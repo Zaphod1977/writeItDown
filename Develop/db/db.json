@@ -3,31 +3,6 @@
     {
       "title": "Test Title",
       "text": "Test text"
-    },
-    {
-      "title": "new note",
-      "text": "new text",
-      "id": 1
-    },
-    {
-      "title": "a;sdlkjf",
-      "text": "a;ldkfsj",
-      "id": 2
-    },
-    {
-      "title": "bobby's note",
-      "text": "bobby's text",
-      "id": 3
-    },
-    {
-      "title": "little something",
-      "text": "something little",
-      "id": 4
-    },
-    {
-      "title": "lkhlkjhlhkjl",
-      "text": "lkjlkjlkjlkj",
-      "id": 5
     }
   ]
 }
